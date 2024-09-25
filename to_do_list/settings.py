@@ -120,6 +120,10 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
