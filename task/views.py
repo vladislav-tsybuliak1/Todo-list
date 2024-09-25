@@ -4,7 +4,7 @@ from django.urls import reverse_lazy
 from django.views import generic
 
 from task.forms import TaskForm
-from task.models import Task
+from task.models import Task, Tag
 
 
 def index(request: HttpRequest) -> HttpResponse:
@@ -35,6 +35,11 @@ class TaskUpdateView(generic.UpdateView):
     form_class = TaskForm
     success_url = reverse_lazy("task:index")
 
+
 class TaskDeleteView(generic.DeleteView):
     model = Task
     success_url = reverse_lazy("task:index")
+
+class TagListView(generic.ListView):
+    model = Tag
+
