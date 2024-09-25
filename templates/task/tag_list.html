@@ -18,7 +18,7 @@
         <tr>
           <td>{{ tag.name }}</td>
           <td>
-            <a href="#">
+            <a href="{% url 'task:tag-update' tag.id %}">
               <i class="bi-pen h3"></i>
             </a>
           </td>
