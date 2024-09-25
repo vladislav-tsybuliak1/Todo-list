@@ -3,9 +3,9 @@
 {% block content %}
   <div class="d-flex justify-content-between align-items-center">
     <h1>Tag list</h1>
-      <a class="btn btn-primary" href="{% url 'task:tag-create' %}">
-        Add a new tag
-      </a>
+    <a class="btn btn-primary" href="{% url 'task:tag-create' %}">
+      Add a new tag
+    </a>
   </div>
   {% if tag_list %}
     <table class="table table-hover align-middle">
@@ -27,7 +27,7 @@
                href="{% url 'task:tag-delete' tag.id %}">
               <i class="bi-trash h3"></i>
             </a>
-            </td>
+          </td>
         </tr>
       {% endfor %}
     </table>
@@ -35,4 +35,3 @@
     <p>There are no tags.</p>
   {% endif %}
 {% endblock %}
-

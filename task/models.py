@@ -19,9 +19,9 @@ class Task(models.Model):
             "-created_at",
         )
 
-
     def __str__(self) -> str:
         return self.content
+
 
 class Tag(models.Model):
     name = models.CharField(max_length=23, unique=True)
