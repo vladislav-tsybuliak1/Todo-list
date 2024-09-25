@@ -9,6 +9,8 @@ class Task(models.Model):
     tags = models.ManyToManyField(
         to="Tag",
         related_name="tasks",
+        null=True,
+        blank=True,
     )
 
     def __str__(self) -> str:
