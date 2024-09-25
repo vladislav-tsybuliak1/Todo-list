@@ -13,6 +13,13 @@ class Task(models.Model):
         blank=True,
     )
 
+    class Meta:
+        ordering = (
+            "is_completed",
+            "-created_at",
+        )
+
+
     def __str__(self) -> str:
         return self.content
 
