@@ -11,3 +11,6 @@ class Task(models.Model):
         related_name="tasks",
     )
 
+
+class Tag(models.Model):
+    name = models.CharField(max_length=255, unique=True)
