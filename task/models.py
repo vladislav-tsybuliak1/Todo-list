@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Task(models.Model):
-    content = models.TextField()
+    content = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
     deadline_at = models.DateTimeField(null=True, blank=True)
     is_completed = models.BooleanField()
@@ -13,4 +13,4 @@ class Task(models.Model):
 
 
 class Tag(models.Model):
-    name = models.CharField(max_length=255, unique=True)
+    name = models.CharField(max_length=23, unique=True)
