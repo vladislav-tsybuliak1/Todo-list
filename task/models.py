@@ -11,6 +11,11 @@ class Task(models.Model):
         related_name="tasks",
     )
 
+    def __str__(self) -> str:
+        return self.content
 
 class Tag(models.Model):
     name = models.CharField(max_length=23, unique=True)
+
+    def __str__(self) -> str:
+        return self.name
