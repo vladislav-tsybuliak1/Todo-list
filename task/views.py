@@ -5,7 +5,7 @@ from task.models import Task
 
 
 def index(request: HttpRequest) -> HttpResponse:
-    tasks = Task.objects.all()
+    tasks = Task.objects.prefetch_related("tags")
     context = {
         "tasks": tasks
     }

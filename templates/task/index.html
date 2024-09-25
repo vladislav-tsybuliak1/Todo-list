@@ -44,11 +44,11 @@
 
           <div class="container">
             <div class="d-flex">
-              <p>Tags: </p>
+              <p class="mr-2">Tags: </p>
               {% for tag in task.tags.all %}
-                {{ tag }}
+                <p class="mr-2">#{{ tag }}</p>
               {% empty %}
-                <p>No tags</p>
+                <p class="mr-2">No tags</p>
               {% endfor %}
             </div>
           </div>
