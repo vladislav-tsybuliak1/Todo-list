@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
+from task.forms import TaskForm
 from task.models import Task
 
 
@@ -16,5 +17,5 @@ def index(request: HttpRequest) -> HttpResponse:
 
 class TaskCreateView(generic.CreateView):
     model = Task
-    fields = ("content", "deadline_at", "tags")
+    form_class = TaskForm
     success_url = reverse_lazy("task:index")
