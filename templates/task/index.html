@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="d-flex justify-content-between align-items-center">
+    <h1>TODO list</h1>
+    <a class="btn btn-primary" href="{% url 'task:task-create' %}">
+      Add a new task
+    </a>
+  </div>
+
+  {% if tasks %}
+    {% for task in tasks %}
+      <div class="pb-2">
+      <div class="card p-4 task">
+
+        <div class="container">
+          <div class="row h3">
+            <div class="col-8 d-flex font-weight-bold">
+              <p class="mr-1">
+                {{ task }}
+              </p>
+              {% if task.is_completed %}
+                <p class="ml-1 text-success">
+                  Done
+                </p>
+              {% else %}
+                <p class="ml-1 text-danger">
+                  Not done
+                </p>
+              {% endif %}
+
+            </div>
+            <div class="col-4">
+              <form method="post" action="">
+                {% csrf_token %}
+                <input type="hidden" name="task_id" value="{{ task.id }}">
+                {% if task.is_completed %}
+                  <button type="submit" class="btn btn-outline-dark">
+                    Undo
+                  </button>
+                {% else %}
+                  <button type="submit" class="btn btn-outline-success">
+                    Complete
+                  </button>
+                {% endif %}
+
+
+              </form>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="container">
+          <p>
+            Created at: {{ task.created_at }}
+          </p>
+          {% if task.deadline_at %}
+            <p class="text-warning font-weight-bold">
+              Deadline: {{ task.deadline_at }}
+            </p>
+          {% endif %}
+        </div>
+
+        <div class="container">
+          <div class="d-flex">
+            <p class="mr-2">Tags: </p>
+            {% for tag in task.tags.all %}
+              <p class="mr-2">#{{ tag }}</p>
+            {% empty %}
+              <p class="mr-2">No tags</p>
+            {% endfor %}
+          </div>
+          <div>
+            <a href="{% url 'task:task-update' task.id %}"
+               class="btn btn-outline-primary">
+              <i class="bi-pen h3"></i>
+            </a>
+            <a href="{% url 'task:task-delete' task.id %}"
+               class="btn btn-outline-danger">
+              <i class="bi-trash h3"></i>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    {% endfor %}
+  {% else %}
+    No tasks yet. Create a new one.
+  {% endif %}
+{% endblock %}

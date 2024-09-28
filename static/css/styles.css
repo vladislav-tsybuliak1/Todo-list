@@ -1,0 +1,11 @@
+body {
+    margin-top: 20px;
+}
+
+.task {
+  transition: background-color 0.3s ease;
+}
+
+.task:hover {
+  background-color: ghostwhite;
+}
